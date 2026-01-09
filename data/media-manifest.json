@@ -1,0 +1,50 @@
+[
+  {
+    "id": "vid01",
+    "title": "關雎.wmv",
+    "type": "youtube",
+    "url": "https://www.youtube.com/embed/qqUiT1jbAHg"
+  },
+  {
+    "id": "vid02",
+    "title": "ellipse_arc_chord_fan.wmv",
+    "type": "youtube",
+    "url": "https://www.youtube.com/embed/oUwsCoSO0pQ"
+  },
+  {
+    "id": "vid03",
+    "title": "ribbon_3_4.wmv",
+    "type": "youtube",
+    "url": "https://www.youtube.com/embed/hneClhS5YuU"
+  },
+  {
+    "id": "vid04",
+    "title": "ribbon_1_2.wmv",
+    "type": "youtube",
+    "url": "https://www.youtube.com/embed/ZdczJvsMo08"
+  },
+  {
+    "id": "vid05",
+    "title": "cubip_herat.wmv",
+    "type": "youtube",
+    "url": "https://www.youtube.com/embed/MCppeKfEVz0"
+  },
+  {
+    "id": "vid06",
+    "title": "Smile_face.wmv",
+    "type": "youtube",
+    "url": "https://www.youtube.com/embed/ePVOf7Esj4E"
+  },
+  {
+    "id": "vid36",
+    "title": "本地影片示範 (MP4)",
+    "type": "mp4",
+    "url": "assets/videos/game.mp4"
+  },
+  {
+    "id": "aud01",
+    "title": "happy_relaxing(MP3)",
+    "type": "audio",
+    "url": "assets/audio/happy_relaxing.mp3"
+  }
+]

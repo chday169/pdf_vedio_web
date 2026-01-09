@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF閱讀與多媒體播放整合</title>
+    <!-- PDF.js 庫 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 基本樣式保留在HTML中以確保載入 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-book-reader"></i> PDF閱讀器與多媒體播放器整合</h1>
+            <p>支援PDF文件、YouTube影片、MP4影片與MP3音訊播放</p>
+        </div>
+        
+        <div class="controls">
+            <div class="upload-section">
+                <select id="pdf-select">
+                    <option value="">請選擇PDF文件</option>
+                </select>
+                <button id="load-pdf"><i class="fas fa-file-pdf"></i> 載入PDF</button>
+            </div>
+            <div class="upload-section">
+                <input type="text" id="video-url" placeholder="輸入YouTube影片網址或ID">
+                <button id="load-youtube"><i class="fab fa-youtube"></i> 載入YouTube</button>
+            </div>
+        </div>
+        
+        <!-- PDF清單區域 -->
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-list"></i> PDF文件清單</h2>
+            <div class="pdf-list" id="pdf-list-container">
+                <div class="loading-indicator">
+                    <i class="fas fa-spinner fa-spin"></i> 載入PDF清單中...
+                </div>
+            </div>
+        </div>
+        
+        <!-- PDF閱讀器區域 -->
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-file-pdf"></i> PDF閱讀器</h2>
+            <div id="pdf-container">
+                <div id="pdf-loader" class="pdf-loader">
+                    <i class="fas fa-file-pdf fa-3x"></i>
+                    <p>請選擇PDF文件載入</p>
+                </div>
+                <canvas id="pdf-canvas"></canvas>
+            </div>
+            <div class="pdf-controls">
+                <button id="prev-page"><i class="fas fa-chevron-left"></i> 上一頁</button>
+                <div class="page-info">
+                    <span>頁數: <span id="page-num">1</span> / <span id="page-count">0</span></span>
+                </div>
+                <button id="next-page">下一頁 <i class="fas fa-chevron-right"></i></button>
+                <button id="zoom-in"><i class="fas fa-search-plus"></i> 放大</button>
+                <button id="zoom-out"><i class="fas fa-search-minus"></i> 縮小</button>
+                <button id="fit-width"><i class="fas fa-expand-arrows-alt"></i> 適合寬度</button>
+            </div>
+        </div>
+        
+        <!-- 多媒體清單區域 -->
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-film"></i> 多媒體清單 (影片與音訊)</h2>
+            <div class="media-list" id="media-list-container">
+                <div class="loading-indicator">
+                    <i class="fas fa-spinner fa-spin"></i> 載入媒體清單中...
+                </div>
+            </div>
+        </div>
+        
+        <!-- 多媒體播放器區域 -->
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-play-circle"></i> 多媒體播放器</h2>
+            <div class="current-playing" id="current-media-title">
+                <i class="fas fa-music"></i> 請選擇要播放的媒體
+            </div>
+            <div class="media-container">
+                <!-- YouTube播放器 -->
+                <div id="youtube-player"></div>
+                
+                <!-- HTML5影片播放器 -->
+                <video id="video-player" controls>
+                    您的瀏覽器不支持HTML5影片標籤
+                </video>
+                
+                <!-- HTML5音訊播放器 -->
+                <audio id="audio-player" controls>
+                    您的瀏覽器不支持HTML5音訊標籤
+                </audio>
+            </div>
+            <div class="media-controls">
+                <button id="play-media"><i class="fas fa-play"></i> 播放</button>
+                <button id="pause-media"><i class="fas fa-pause"></i> 暫停</button>
+                <button id="mute-media"><i class="fas fa-volume-mute"></i> 靜音/取消靜音</button>
+                <button id="fullscreen-media"><i class="fas fa-expand"></i> 全螢幕 (影片)</button>
+                <button id="download-media" style="display:none;"><i class="fas fa-download"></i> 下載</button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>GitHub 倉庫: <a href="https://github.com/chday169/pdf-vedio-web" target="_blank">chday169/pdf-vedio-web</a></p>
+            <p>使用技術: PDF.js, YouTube API, HTML5 Video/Audio</p>
+        </div>
+    </div>
+
+    <!-- YouTube IFrame API 將動態載入 -->
+    <script src="js/app.js"></script>
+</body>
+</html>
